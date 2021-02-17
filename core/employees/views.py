@@ -1,9 +1,10 @@
+from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-
+from .forms import EmployeeForm
 from .models import Employee
 
 
@@ -33,3 +34,9 @@ class EmployeeListView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Listado de Empleados'
         return context
+
+
+class EmployeeCreateView(CreateView):
+    model = Employee
+    form_class = EmployeeForm
+    template_name = 'employees/create_update.html'
