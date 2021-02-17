@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %}
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'libs/DataTables/datatables.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="container container-fluid">
+        <div class="row">
+            <div class="col">
+                <table id="data" class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha de nacimiento</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extrajs %}
+    <script src="{% static 'libs/DataTables/datatables.js' %}"></script>
+    <script src="{% static 'js/employees/list.js' %}"></script>
+{% endblock %}
