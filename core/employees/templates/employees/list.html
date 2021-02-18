@@ -1,4 +1,7 @@
 {% extends 'base.html' %} {% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
 {% block extrastyle %}
     <link rel="stylesheet" href="{% static 'libs/DataTables/datatables.css' %}">
 {% endblock %}
@@ -6,6 +9,7 @@
     <div class="container container-fluid">
         <div class="row">
             <div class="col">
+                <a class="btn" href="{{ create_url }}">Agregar nuevo empleado</a>
                 <table id="data" class="table table-responsive">
                     <thead>
                     <tr>
