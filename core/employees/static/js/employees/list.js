@@ -24,8 +24,10 @@ $(function () {
                 class: 'text-center',
                 orderable: false,
                 render: function (data, type, row) {
-                    var buttons = '<a href="/erp/category/update/' + row.id + '/" class="btn btn-warning btn-xs btn-flat"><i class="fas fa-edit"></i></a> ';
-                    buttons += '<a href="/erp/category/delete/' + row.id + '/" type="button" class="btn btn-danger btn-xs btn-flat"><i class="fas fa-trash-alt"></i></a>';
+                    let buttons = '<a href="/employees/update/' + row.id + '/" ' +
+                        'class="btn btn-warning btn-xs btn-flat">Editar</a> ';
+                    buttons += '<a href="/employees/delete/' + row.id + '/" type="button" ' +
+                        'class="btn btn-danger btn-xs btn-flat">Eliminar</a>';
                     return buttons;
                 }
             },

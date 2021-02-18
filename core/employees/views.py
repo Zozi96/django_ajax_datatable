@@ -1,4 +1,6 @@
-from django.views.generic.edit import CreateView
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.http import JsonResponse
 from django.utils.decorators import method_decorator
@@ -32,7 +34,8 @@ class EmployeeListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Listado de Empleados'
+        context['title'] = 'Listado de empleados'
+        context['create_url'] = reverse_lazy('emplooyes:create')
         return context
 
 
@@ -40,3 +43,27 @@ class EmployeeCreateView(CreateView):
     model = Employee
     form_class = EmployeeForm
     template_name = 'employees/create_update.html'
+    success_url = reverse_lazy('emplooyes:list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Registrar empleado'
+        return context
+
+
+class EmployeeUpdateView(UpdateView):
+    model = Employee
+    form_class = EmployeeForm
+    template_name = 'employees/create_update.html'
+    success_url = reverse_lazy('emplooyes:list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Editar empleado'
+        return context
+
+
+def employee_delete(request, pk):
+    instance = get_object_or_404(Employee, pk=pk)
+    instance.delete()
+    return redirect(to='emplooyes:list')

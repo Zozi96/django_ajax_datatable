@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %} {% load crispy_forms_tags %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Guardar" class="btn btn-primary"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block extrajs %}
+    <script>
+        $('form').on('submit', function (e) {
+            alert('Registro guardado');
+        })
+    </script>
+{% endblock %}
