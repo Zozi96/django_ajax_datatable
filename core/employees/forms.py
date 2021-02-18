@@ -7,7 +7,11 @@ class EmployeeForm(forms.ModelForm):
         model = Employee
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput(),
-            'last_name': forms.TextInput(),
+            'name': forms.TextInput(attrs={
+                'autocomplete': 'off',
+            }),
+            'last_name': forms.TextInput(attrs={
+                'autocomplete': 'off',
+            }),
             'birthday': forms.NumberInput(attrs={'type': 'date'})
         }
