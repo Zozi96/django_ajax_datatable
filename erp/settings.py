@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'core.employees',
+    'core.movies',
 ]
 
 MIDDLEWARE = [
